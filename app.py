@@ -106,5 +106,5 @@ while True:
     time.sleep(0.1)
 
     # Reinicie o aplicativo após 1 hora (3600 segundos)
-    if time.time() - tempo_inicial > 3600:
+    if time.time() - tempo_inicial > 1800:
         st.experimental_rerun()
