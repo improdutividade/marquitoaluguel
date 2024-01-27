@@ -2,6 +2,13 @@ import streamlit as st
 from datetime import datetime, timedelta
 import time
 
+st.set_page_config(
+    page_title="Aluguel Marquito",
+    page_icon="💸",
+    layout='centered',
+    initial_sidebar_state='expanded'
+)    
+
 def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
     # Defina a data de início
     data_inicio = datetime.strptime(data_inicio, "%d/%m/%Y")
