@@ -1,15 +1,16 @@
 import streamlit as st
 from datetime import datetime, timedelta
+import time
 
 def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
     # Defina a data de início
     data_inicio = datetime.strptime(data_inicio, "%d/%m/%Y")
 
-    # Calcule a diferença em minutos entre a data de início e a data atual
-    minutos_decorridos = (datetime.now() - data_inicio).total_seconds() / 60
+    # Calcule a diferença em segundos entre a data de início e a data atual
+    segundos_decorridos = (datetime.now() - data_inicio).total_seconds()
 
-    # Calcule o valor gasto considerando o valor por minuto
-    valor_gasto = minutos_decorridos * (valor_aluguel_mensal / (30 * 24 * 60))  # Valor mensal convertido para minutos
+    # Calcule o valor gasto considerando o valor por segundo
+    valor_gasto = segundos_decorridos * (valor_aluguel_mensal / (30 * 24 * 60 * 60))  # Valor mensal convertido para segundos
 
     return valor_gasto
 
@@ -19,10 +20,18 @@ st.title("Impostômetro de Aluguel")
 # Input para a data de início
 data_inicio = st.text_input("Digite a data de início (formato: dd/mm/yyyy)", "15/07/2023")
 
-# Input para o valor mensal do aluguel
-valor_aluguel_mensal = st.number_input("Digite o valor mensal do aluguel", min_value=0.01, value=1750.00)
+# Valor mensal do aluguel
+valor_aluguel_mensal = 1750.00
 
-# Botão para calcular o valor gasto
-if st.button("Calcular"):
+# Crie um espaço vazio para atualizar dinamicamente
+valor_gasto_placeholder = st.empty()
+
+while True:
+    # Calcule o valor gasto com aluguel
     valor_gasto = calcular_valor_aluguel(data_inicio, valor_aluguel_mensal)
-    st.success(f"Valor gasto com aluguel: R$ {valor_gasto:.2f}")
+
+    # Atualize o espaço vazio com o novo valor
+    valor_gasto_placeholder.text(f"Valor gasto com aluguel: R$ {valor_gasto:.2f}")
+
+    # Aguarde 1 segundo antes de atualizar novamente
+    time.sleep(1)
