@@ -23,7 +23,7 @@ def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
 
 # Interface do Streamlit
 st.title("Impostômetro de Aluguel")
-st.markdown("## Acompanhe o valor gasto com aluguel desde 15/07/2023")
+st.markdown("## Acompanhe quantos R$ o André Russo Dias Marquito gastou com aluguel em uma casa que ele ainda não mora (valor gasto com aluguel desde 15/07/2023)")
 
 # Data de início fixa
 data_inicio_fixa = "15/07/2023"
