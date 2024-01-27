@@ -1,5 +1,6 @@
 import streamlit as st
-from datetime import datetime
+from datetime import datetime, timedelta
+import time
 
 def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
     # Defina a data de início
@@ -22,8 +23,15 @@ data_inicio_fixa = "15/07/2023"
 # Valor mensal do aluguel
 valor_aluguel_mensal = 1750.00
 
-# Calcule o valor gasto com aluguel
-valor_gasto = calcular_valor_aluguel(data_inicio_fixa, valor_aluguel_mensal)
+# Crie um espaço reservado para atualizar dinamicamente
+valor_gasto_placeholder = st.empty()
 
-# Exiba o valor formatado com 6 casas decimais
-st.text(f"Valor gasto com aluguel: R$ {valor_gasto:.6f}")
+while True:
+    # Calcule o valor gasto com aluguel
+    valor_gasto = calcular_valor_aluguel(data_inicio_fixa, valor_aluguel_mensal)
+
+    # Exiba o valor formatado com 6 casas decimais no espaço reservado
+    valor_gasto_placeholder.text(f"Valor gasto com aluguel: R$ {valor_gasto:.6f}")
+
+    # Aguarde 0.1 segundo antes de atualizar novamente
+    time.sleep(0.1)
