@@ -88,6 +88,10 @@ item_comprado_placeholder = st.empty()
 # Tempo atual para controle de reinicialização
 tempo_inicial = time.time()
 
+# Botão para reiniciar o aplicativo
+if st.button("Reiniciar Aplicativo"):
+    st.experimental_rerun()
+
 while True:
     # Calcule o valor gasto com aluguel
     valor_gasto = calcular_valor_aluguel(data_inicio_fixa, valor_aluguel_mensal)
@@ -106,5 +110,5 @@ while True:
     time.sleep(0.1)
 
     # Reinicie o aplicativo após 1 hora (3600 segundos)
-    if time.time() - tempo_inicial > 1800:
+    if time.time() - tempo_inicial > 3600:
         st.experimental_rerun()
