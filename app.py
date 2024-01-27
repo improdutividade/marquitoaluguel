@@ -48,6 +48,7 @@ st.markdown(
         }}
 
         h2 {{
+            font-size: 1.8em;
             text-align: center;
             margin: 10px 0;
         }}
@@ -95,7 +96,7 @@ while True:
     for item, valor_item in itens.items():
         quantidade = itens_comprados(valor_gasto, valor_item)
         item_comprado_placeholder.markdown(f"<h2>Com esse valor, poderiam ser comprados {quantidade} {item}.</h2>", unsafe_allow_html=True)
-        time.sleep(1)  # Aguarde 1 segundo antes de passar para o próximo item
+        time.sleep(5)  # Aguarde 1 segundo antes de passar para o próximo item
         item_comprado_placeholder.empty()  # Limpe o espaço reservado
 
     # Aguarde 0.1 segundo antes de recomeçar a atualização
