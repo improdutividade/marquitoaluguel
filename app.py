@@ -80,9 +80,9 @@ itens = {
     "Camisa do Cabuloso 2024": 269.90,
 }
 
-# Crie um espaço reservado para atualizar dinamicamente
+# Crie espaços reservados para os textos
 valor_gasto_placeholder = st.empty()
-itens_comprados_placeholder = st.empty()
+item_comprado_placeholder = st.empty()
 
 while True:
     # Calcule o valor gasto com aluguel
@@ -91,13 +91,12 @@ while True:
     # Exiba o valor formatado com 6 casas decimais no espaço reservado
     valor_gasto_placeholder.markdown(f"<h1>Valor gasto com aluguel: R$ {valor_gasto:.6f}</h1>", unsafe_allow_html=True)
 
-    # Atualize a quantidade de itens comprados
-    textos_itens_comprados = []
+    # Atualize dinamicamente os itens comprados
     for item, valor_item in itens.items():
         quantidade = itens_comprados(valor_gasto, valor_item)
-        textos_itens_comprados.append(f"Com esse valor, poderiam ser comprados {quantidade} {item}.")
+        item_comprado_placeholder.markdown(f"<h2>Com esse valor, poderiam ser comprados {quantidade} {item}.</h2>", unsafe_allow_html=True)
+        time.sleep(1)  # Aguarde 1 segundo antes de passar para o próximo item
+        item_comprado_placeholder.empty()  # Limpe o espaço reservado
 
-    itens_comprados_placeholder.markdown("\n".join(textos_itens_comprados))
-
-    # Aguarde 0.1 segundo antes de atualizar novamente
+    # Aguarde 0.1 segundo antes de recomeçar a atualização
     time.sleep(0.1)
