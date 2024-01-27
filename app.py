@@ -21,6 +21,10 @@ def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
 
     return valor_gasto
 
+def itens_comprados(valor_gasto, valor_item):
+    quantidade = valor_gasto / valor_item
+    return int(quantidade)
+
 # URL direto da imagem no GitHub
 background_image = "https://raw.githubusercontent.com/improdutividade/marquitoaluguel/main/quito.jpeg"
 
@@ -63,8 +67,22 @@ data_inicio_fixa = "18/01/2024"
 # Valor mensal do aluguel
 valor_aluguel_mensal = 1750.00
 
+# Itens e seus preços
+itens = {
+    "Tablitos": 29.90,
+    "Heineken 330ml": 6.78,
+    "Fiat Argo": 83490.00,
+    "Kinder Ovo": 8.00,
+    "Air Jordan 1 High Chicago (2015)": 2200.00,
+    "Iphone 12 64gb": 3299.00,
+    "Broto de Bambu Grosso": 25.95,
+    "Arroz 5kg": 25.50,
+    "Camisa do Cabuloso 2024": 269.90,
+}
+
 # Crie um espaço reservado para atualizar dinamicamente
 valor_gasto_placeholder = st.empty()
+itens_comprados_placeholder = st.empty()
 
 while True:
     # Calcule o valor gasto com aluguel
@@ -72,6 +90,14 @@ while True:
 
     # Exiba o valor formatado com 6 casas decimais no espaço reservado
     valor_gasto_placeholder.markdown(f"<h1>Valor gasto com aluguel: R$ {valor_gasto:.6f}</h1>", unsafe_allow_html=True)
+
+    # Atualize a quantidade de itens comprados
+    textos_itens_comprados = []
+    for item, valor_item in itens.items():
+        quantidade = itens_comprados(valor_gasto, valor_item)
+        textos_itens_comprados.append(f"Com esse valor, poderiam ser comprados {quantidade} {item}.")
+
+    itens_comprados_placeholder.markdown("\n".join(textos_itens_comprados))
 
     # Aguarde 0.1 segundo antes de atualizar novamente
     time.sleep(0.1)
