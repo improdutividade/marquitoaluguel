@@ -1,37 +1,34 @@
 import streamlit as st
-from datetime import datetime, timedelta
-import time
+import locale
+from datetime import datetime
+
+# Configurar a formatação local para português do Brasil
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+
+def formatar_valor(valor):
+    return locale.currency(valor, grouping=True, symbol=None)
 
 def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
-    # Defina a data de início
-    data_inicio = datetime.strptime(data_inicio, "%d/%m/%Y")
+    # Função de cálculo aqui
 
-    # Calcule a diferença em milissegundos entre a data de início e a data atual
-    milissegundos_decorridos = (datetime.now() - data_inicio).total_seconds() * 1000
-
-    # Calcule o valor gasto considerando o valor por milissegundo
-    valor_gasto = milissegundos_decorridos * (valor_aluguel_mensal / (30 * 24 * 60 * 60 * 1000))  # Valor mensal convertido para milissegundos
-
-    return valor_gasto
-
-# Interface do Streamlit
+# Título
 st.title("Impostômetro de Aluguel")
 
-# Data de início fixa
-data_inicio_fixa = "15/07/2023"
+# Seção para a entrada de data
+st.subheader("Período de Cálculo")
+data_inicio_fixa = st.date_input("De:", datetime.strptime("15/07/2023", "%d/%m/%Y"))
+data_fim = st.date_input("Até:", datetime.now())
 
-# Valor mensal do aluguel
-valor_aluguel_mensal = 1750.00
-
-# Crie um espaço reservado para atualizar dinamicamente
+# Seção para exibir o contador
 valor_gasto_placeholder = st.empty()
+valor_aluguel_mensal = 1750.00
+valor_gasto = calcular_valor_aluguel(data_inicio_fixa, valor_aluguel_mensal)
 
-while True:
-    # Calcule o valor gasto com aluguel
-    valor_gasto = calcular_valor_aluguel(data_inicio_fixa, valor_aluguel_mensal)
+# Formate o valor usando a função personalizada
+valor_formatado = formatar_valor(valor_gasto)
+valor_gasto_placeholder.text(f"**Valor gasto com aluguel:** {valor_formatado}")
 
-    # Exiba o valor formatado com 6 casas decimais no espaço reservado
-    valor_gasto_placeholder.text(f"Valor gasto com aluguel: R$ {valor_gasto:.6f}")
+# Adicione gráficos, visualizações ou elementos interativos conforme necessário
 
-    # Aguarde 0.1 segundo antes de atualizar novamente
-    time.sleep(0.1)
+# Rodapé
+st.markdown("<small>© 2024 Seu Nome. Todos os direitos reservados.</small>", unsafe_allow_html=True)
