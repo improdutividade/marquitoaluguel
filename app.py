@@ -23,7 +23,8 @@ def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
 
 # Interface do Streamlit
 st.title("Impostômetro de Aluguel")
-st.markdown("## Acompanhe quantos R$ o André Russo Dias Marquito gastou com aluguel em uma casa que ele ainda não mora (valor gasto com aluguel desde 15/07/2023)")
+st.subheader("Acompanhe quantos R$ o André Russo Dias Marquito gastou com aluguel em uma casa que ele ainda não mora.")
+st.subheader("Valor gasto com aluguel desde 15/07/2023")
 
 # Data de início fixa
 data_inicio_fixa = "15/07/2023"
@@ -38,7 +39,7 @@ st.markdown("<style>body { background-color: #f4f4f4; }</style>", unsafe_allow_h
 valor_gasto_placeholder = st.empty()
 
 # Defina o tamanho da fonte
-st.markdown("<style>h1 { font-size: 2em; }</style>", unsafe_allow_html=True)
+st.markdown("<style>h1 { font-size: 3em; }</style>", unsafe_allow_html=True)
 
 while True:
     # Calcule o valor gasto com aluguel
