@@ -55,10 +55,10 @@ st.markdown(
 # Interface do Streamlit
 st.title("Impostômetro de Aluguel")
 st.subheader("Acompanhe quantos R$ o André Russo Dias Marquito gastou com aluguel em uma casa que ele ainda não mora.")
-st.subheader("Valor gasto com aluguel desde 15/07/2023")
+st.subheader("Valor gasto com aluguel desde 18/01/2024")
 
 # Data de início fixa
-data_inicio_fixa = "15/07/2023"
+data_inicio_fixa = "18/01/2024"
 
 # Valor mensal do aluguel
 valor_aluguel_mensal = 1750.00
