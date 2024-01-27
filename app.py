@@ -31,6 +31,22 @@ st.markdown(
         .reportview-container {{
             background: url('{background_image}');
             background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }}
+
+        h1 {{
+            font-size: 2.5em;
+            text-align: center;
+            margin: 0;
+        }}
+
+        h2 {{
+            text-align: center;
+            margin: 10px 0;
         }}
     </style>
     """,
@@ -50,9 +66,6 @@ valor_aluguel_mensal = 1750.00
 
 # Crie um espaço reservado para atualizar dinamicamente
 valor_gasto_placeholder = st.empty()
-
-# Defina o tamanho da fonte
-st.markdown("<style>h1 { font-size: 2.5em; }</style>", unsafe_allow_html=True)
 
 while True:
     # Calcule o valor gasto com aluguel
