@@ -23,7 +23,7 @@ def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
     return valor_gasto
 
 # URL direto da imagem no GitHub
-background_image = "https://raw.githubusercontent.com/seu_usuario/seu_repositorio/master/sua_imagem.jpg"
+background_image = "quito.jpeg"
 
 st.markdown(
     f"""
