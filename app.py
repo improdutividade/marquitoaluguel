@@ -15,10 +15,10 @@ def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
     return valor_gasto
 
 # Interface do Streamlit
-st.title("Impostômetro de Aluguel")
+st.title("Quantos R$ o Marquito já gastou com aluguel numa casa em que ele não mora?")
 
-# Input para a data de início
-data_inicio = st.text_input("Digite a data de início (formato: dd/mm/yyyy)", "15/07/2023")
+# Data de início fixa
+data_inicio_fixa = "15/07/2023"
 
 # Valor mensal do aluguel
 valor_aluguel_mensal = 1750.00
@@ -28,7 +28,7 @@ valor_gasto_placeholder = st.empty()
 
 while True:
     # Calcule o valor gasto com aluguel
-    valor_gasto = calcular_valor_aluguel(data_inicio, valor_aluguel_mensal)
+    valor_gasto = calcular_valor_aluguel(data_inicio_fixa, valor_aluguel_mensal)
 
     # Atualize o espaço vazio com o novo valor
     valor_gasto_placeholder.text(f"Valor gasto com aluguel: R$ {valor_gasto:.2f}")
