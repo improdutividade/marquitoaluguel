@@ -1,11 +1,12 @@
 import streamlit as st
+import base64
 from datetime import datetime, timedelta
 import time
 
 st.set_page_config(
     page_title="Aluguel Marquito",
     page_icon="💸",
-    layout='centered',
+    layout='wide',
     initial_sidebar_state='expanded'
 )    
 
@@ -21,6 +22,21 @@ def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
 
     return valor_gasto
 
+# URL direto da imagem no GitHub
+background_image = "https://raw.githubusercontent.com/seu_usuario/seu_repositorio/master/sua_imagem.jpg"
+
+st.markdown(
+    f"""
+    <style>
+        .reportview-container {{
+            background: url('{background_image}');
+            background-size: cover;
+        }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Interface do Streamlit
 st.title("Impostômetro de Aluguel")
 st.subheader("Acompanhe quantos R$ o André Russo Dias Marquito gastou com aluguel em uma casa que ele ainda não mora.")
@@ -32,14 +48,11 @@ data_inicio_fixa = "15/07/2023"
 # Valor mensal do aluguel
 valor_aluguel_mensal = 1750.00
 
-# Configurações visuais
-st.markdown("<style>body { background-color: #f4f4f4; }</style>", unsafe_allow_html=True)
-
 # Crie um espaço reservado para atualizar dinamicamente
 valor_gasto_placeholder = st.empty()
 
 # Defina o tamanho da fonte
-st.markdown("<style>h1 { font-size: 3em; }</style>", unsafe_allow_html=True)
+st.markdown("<style>h1 { font-size: 2.5em; }</style>", unsafe_allow_html=True)
 
 while True:
     # Calcule o valor gasto com aluguel
