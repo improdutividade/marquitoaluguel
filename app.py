@@ -85,6 +85,9 @@ itens = {
 valor_gasto_placeholder = st.empty()
 item_comprado_placeholder = st.empty()
 
+# Tempo atual para controle de reinicialização
+tempo_inicial = time.time()
+
 while True:
     # Calcule o valor gasto com aluguel
     valor_gasto = calcular_valor_aluguel(data_inicio_fixa, valor_aluguel_mensal)
@@ -96,8 +99,12 @@ while True:
     for item, valor_item in itens.items():
         quantidade = itens_comprados(valor_gasto, valor_item)
         item_comprado_placeholder.markdown(f"<h2>Com esse valor poderiam ser comprados {quantidade} {item}.</h2>", unsafe_allow_html=True)
-        time.sleep(5)  # Aguarde 1 segundo antes de passar para o próximo item
+        time.sleep(5)  # Aguarde 5 segundos antes de passar para o próximo item
         item_comprado_placeholder.empty()  # Limpe o espaço reservado
 
     # Aguarde 0.1 segundo antes de recomeçar a atualização
     time.sleep(0.1)
+
+    # Reinicie o aplicativo após 1 hora (3600 segundos)
+    if time.time() - tempo_inicial > 3600:
+        st.experimental_rerun()
