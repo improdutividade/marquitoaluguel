@@ -1,5 +1,4 @@
 import streamlit as st
-import base64
 from datetime import datetime, timedelta
 import time
 
@@ -23,13 +22,13 @@ def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
     return valor_gasto
 
 # URL direto da imagem no GitHub
-background_image = "https://github.com/improdutividade/marquitoaluguel/blob/fde9aba172550156fc4716c465c66c9574dffd6e/quito.jpeg"
+background_image = "https://raw.githubusercontent.com/improdutividade/marquitoaluguel/fde9aba172550156fc4716c465c66c9574dffd6e/quito.jpeg"
 
 st.markdown(
     f"""
     <style>
         .reportview-container {{
-            background: url('{https://github.com/improdutividade/marquitoaluguel/blob/fde9aba172550156fc4716c465c66c9574dffd6e/quito.jpeg}');
+            background: url('{background_image}');
             background-size: cover;
             display: flex;
             flex-direction: column;
