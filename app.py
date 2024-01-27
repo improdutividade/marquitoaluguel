@@ -1,10 +1,7 @@
 import streamlit as st
 from datetime import datetime, timedelta
 import time
-import locale
-
-# Configuração de localização para formatar como dinheiro
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+from babel.numbers import format_currency
 
 def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
     # Defina a data de início
@@ -35,7 +32,7 @@ while True:
     valor_gasto = calcular_valor_aluguel(data_inicio_fixa, valor_aluguel_mensal)
 
     # Formate o valor como dinheiro
-    valor_formatado = locale.currency(valor_gasto, grouping=True)
+    valor_formatado = format_currency(valor_gasto, 'BRL', locale='pt_BR')
 
     # Atualize o espaço vazio com o novo valor formatado
     valor_gasto_placeholder.text(f"Valor gasto com aluguel: {valor_formatado}")
