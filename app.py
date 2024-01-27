@@ -2,6 +2,10 @@ import streamlit as st
 from datetime import datetime, timedelta
 import time
 from babel.numbers import format_currency
+import subprocess
+import sys
+
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'babel==2.9.1'])
 
 def calcular_valor_aluguel(data_inicio, valor_aluguel_mensal):
     # Defina a data de início
